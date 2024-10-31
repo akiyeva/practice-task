@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35017.193
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.API", "classroomTask\Task.API.csproj", "{099CD39B-7D4D-4766-9E6C-3264173ED869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task.API", "classroomTask\Task.API.csproj", "{099CD39B-7D4D-4766-9E6C-3264173ED869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Domain", "Task.DAL\Task.Domain.csproj", "{A47C3078-47E9-4BE8-8F17-8269AD2769F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task.Domain", "Task.DAL\Task.Domain.csproj", "{A47C3078-47E9-4BE8-8F17-8269AD2769F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Persistence", "Task.Persistence\Task.Persistence.csproj", "{8F999AB2-E1EB-4812-AB9B-C25A4BC9F439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task.Persistence", "Task.Persistence\Task.Persistence.csproj", "{8F999AB2-E1EB-4812-AB9B-C25A4BC9F439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task.Application", "Task.Application\Task.Application.csproj", "{0D49C0AF-A996-41CC-A4F5-58174F513B3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task.Application", "Task.Application\Task.Application.csproj", "{0D49C0AF-A996-41CC-A4F5-58174F513B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core.Persistence", "core.Persistence\core.Persistence.csproj", "{FAF30A69-E255-459D-9609-D2CFCD117FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistence", "core.Persistence\Core.Persistence.csproj", "{FAF30A69-E255-459D-9609-D2CFCD117FDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{1507CDCD-636D-4E19-8A0C-A4F4CE5513B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{1507CDCD-636D-4E19-8A0C-A4F4CE5513B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,7 +8,7 @@ namespace DataAccessLayer
     {
         public static IServiceCollection AddDalService(this IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Server=TITAN11\\SQLEXPRESS;Database=Test; Trusted_Connection=True;TrustServerCertificate = true"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Server=NAFISATAKIYEVA;Database=Test; Trusted_Connection=True;TrustServerCertificate = true"));
 
             return services;
         }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Task.Application.Services;
-using Task.Application.Services.Contracts;
 
 namespace Task.Application
 {

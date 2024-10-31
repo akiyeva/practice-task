@@ -1,8 +1,8 @@
-﻿using Task.Domain.Entities.Common;
+﻿using Core.Persistence.Repositories;
 
 namespace Task.Domain.Entities
 {
-    public class Category : Base
+    public class Category : Entity  
     {
         public string? Name { get; set; }
     }

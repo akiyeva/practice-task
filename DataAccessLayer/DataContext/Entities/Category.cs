@@ -1,4 +1,4 @@
-﻿using core.Persistence.Repositories;
+﻿using Core.Persistence.Repositories;
 
 namespace DataAccessLayer.DataContext.Entities
 {

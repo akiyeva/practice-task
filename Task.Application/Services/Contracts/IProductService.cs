@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using Task.Application.Dtos;
 using Task.Domain.Entities;
 
-namespace Academy.Application.Services.StudentService;
+namespace Task.Application.Services;
 
 public interface IProductService
 {
@@ -13,8 +13,8 @@ public interface IProductService
 
     Task<ProductListDto> GetListAsync(Expression<Func<Product, bool>>? predicate = null,
                                     Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null,
-                                    Func<IQueryable<Product>, IIncludableQueryable<Product, object>>? include = null,
-                                    int index = 0, int size = 10, bool enableTracking = true);
+                                    Func<IQueryable<Product>, IIncludableQueryable<Product, object>>? include = null
+                                    );
 
     Task<ProductDto> AddAsync(ProductCreateDto createDto);
     Task<ProductDto> UpdateAsync(int id, ProductUpdateDto updateDto);

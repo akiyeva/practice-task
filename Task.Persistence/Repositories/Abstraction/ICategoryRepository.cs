@@ -1,5 +1,4 @@
-﻿using core.Persistence.Repositories;
-using Core.Persistence.Repositories;
+﻿using Core.Persistence.Repositories;
 using Task.Domain.Entities;
 
 namespace Task.Persistence.Repositories.Abstraction

@@ -1,4 +1,4 @@
-﻿namespace core.Persistence.Repositories
+﻿namespace Core.Persistence.Repositories
 {
     public class Entity
     {

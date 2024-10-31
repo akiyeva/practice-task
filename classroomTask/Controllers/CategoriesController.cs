@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Task.Application.Services.Contracts;
+using Task.Application.Dtos;
+using Task.Application.Services;
 
 namespace Task.API.Controllers
 {
@@ -7,16 +8,57 @@ namespace Task.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        public readonly ICategoryService _categoryManager;
-        public CategoriesController(ICategoryService categoryManager)
+        private readonly ICategoryService _categoryManager;
+        public CategoriesController(ICategoryService categoryService)
         {
-            _categoryManager = categoryManager;
+            _categoryManager = categoryService;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAll()
         {
+            var categoryList = await _categoryManager.GetListAsync();
+
+            return Ok(categoryList);
         }
 
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var category = await _categoryManager.GetAsync(id.Value);
+
+            return Ok(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] CategoryCreateDto createDto)
+        {
+            var createdCategory = await _categoryManager.AddAsync(createDto);
+
+            return Ok(createdCategory);
+        }
+
+        [HttpPut("{id?}")]
+        public async Task<IActionResult> Put(int? id, [FromBody] CategoryUpdateDto updateDto)
+        {
+            if (id == null) return NotFound();
+
+            var updatedCategory = await _categoryManager.UpdateAsync(id.Value, updateDto);
+
+            return Ok(updatedCategory);
+        }
+
+        [HttpDelete("{id?}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var deletedCategory = await _categoryManager.DeleteAsync(id.Value);
+
+            return Ok(deletedCategory);
+        }
     }
+
 }
+

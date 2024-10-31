@@ -15,4 +15,8 @@
     {
         public string? Name { get; set; }
     }
+    public class CategoryListDto : IDto
+    {
+        public List<CategoryDto> Items { get; set; } = [];
+    }
 }

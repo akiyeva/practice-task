@@ -1,75 +1,80 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
+using Task.Application.Dtos;
+using Task.Domain.Entities;
+using Task.Persistence.Repositories.Abstraction;
 
-namespace Academy.Application.Services.StudentService;
+namespace Task.Application.Services;
 
 public class ProductManager : IProductService
 {
-    private readonly IProductRepository _studentRepository;
+    private readonly IProductRepository _productRepository;
     private readonly IMapper _mapper;
 
-    public StudentManager(IStudentRepository studentRepository, IMapper mapper)
+    public ProductManager(IProductRepository productRepository, IMapper mapper)
     {
-        _studentRepository = studentRepository;
+        _productRepository = productRepository;
         _mapper = mapper;
     }
 
-    public async Task<StudentDto> AddAsync(StudentCreateDto createDto)
+    public async Task<ProductDto> AddAsync(ProductCreateDto createDto)
     {
-        var studentEntity = _mapper.Map<Student>(createDto);
-        var createdStudent = await _studentRepository.AddAsync(studentEntity);
-        return _mapper.Map<StudentDto>(createdStudent);
+        var productEntity = _mapper.Map<Product>(createDto);
+        var createdProduct = await _productRepository.CreateAsync(productEntity);
+        return _mapper.Map<ProductDto>(createdProduct);
     }
 
-    public async Task<StudentDto> DeleteAsync(int id)
+    public async Task<ProductDto> DeleteAsync(int id)
     {
-        var existStudent = await _studentRepository.GetAsync(id);
+        var existProduct = await _productRepository.GetAsync(id);
 
-        if (existStudent == null) throw new Exception("Not found");
+        if (existProduct == null) throw new Exception("Not found");
 
-        var deletedStudent = await _studentRepository.DeleteAsync(existStudent);
+        var deletedProduct = await _productRepository.RemoveAsync(existProduct);
 
-        return _mapper.Map<StudentDto>(deletedStudent);
+        return _mapper.Map<ProductDto>(deletedProduct);
     }
 
-    public async Task<StudentDto?> GetAsync(int id)
+    public async Task<ProductDto?> GetAsync(int id)
     {
-        var studentEntity = await _studentRepository.GetAsync(id);
+        var productEntity = await _productRepository.GetAsync(id);
 
-        if (studentEntity == null) throw new Exception("Not found");
+        if (productEntity == null) throw new Exception("Not found");
 
-        return _mapper.Map<StudentDto>(studentEntity);
+        return _mapper.Map<ProductDto>(productEntity);
     }
 
-    public async Task<StudentDto?> GetAsync(Expression<Func<Student, bool>> predicate, Func<IQueryable<Student>, IIncludableQueryable<Student, object>>? include = null)
+    public async Task<ProductDto?> GetAsync(Expression<Func<Product, bool>> predicate, Func<IQueryable<Product>, IIncludableQueryable<Product, object>>? include = null)
     {
-        var studentEntity = await _studentRepository.GetAsync(predicate, include);
+        var productEntity = await _productRepository.GetAsync(predicate, include);
 
-        if (studentEntity == null) throw new Exception("Not found");
+        if (productEntity == null) throw new Exception("Not found");
 
-        return _mapper.Map<StudentDto>(studentEntity);
+        return _mapper.Map<ProductDto>(productEntity);
     }
 
-    public async Task<StudentListDto> GetListAsync(Expression<Func<Student, bool>>? predicate = null, Func<IQueryable<Student>, IOrderedQueryable<Student>>? orderBy = null, Func<IQueryable<Student>, IIncludableQueryable<Student, object>>? include = null, int index = 0, int size = 10, bool enableTracking = true)
+    public async Task<ProductListDto> GetListAsync(Expression<Func<Product, bool>>? predicate = null,
+        Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null, 
+        Func<IQueryable<Product>, IIncludableQueryable<Product, object>>? include = null)
     {
-        var studentListEntity = await _studentRepository.GetListAsync(predicate, orderBy, include, index, size, enableTracking);
+        var productListEntity = await _productRepository.GetListAsync(predicate, include, orderBy);
 
-        if (studentListEntity == null) throw new Exception("Not found");
+        if (productListEntity == null) throw new Exception("Not found");
 
-        return _mapper.Map<StudentListDto>(studentListEntity);
+        return _mapper.Map<ProductListDto>(productListEntity);
     }
 
-    public async Task<StudentDto> UpdateAsync(int id, StudentUpdateDto updateDto)
+    public async Task<ProductDto> UpdateAsync(int id, ProductUpdateDto updateDto)
     {
-        var existStudent = await _studentRepository.GetAsync(id);
+        var existProduct = await _productRepository.GetAsync(id);
 
-        if (existStudent == null) throw new Exception("Not found");
+        if (existProduct == null) throw new Exception("Not found");
 
-        existStudent = _mapper.Map(updateDto, existStudent);
+        existProduct = _mapper.Map(updateDto, existProduct);
 
-        var updatedStudent = await _studentRepository.UpdateAsync(existStudent);
+        var updatedProduct = await _productRepository.UpdateAsync(existProduct);
 
-        return _mapper.Map<StudentDto>(updatedStudent);
+        return _mapper.Map<ProductDto>(updatedProduct);
     }
 }
